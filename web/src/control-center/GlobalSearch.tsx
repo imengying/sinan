@@ -40,7 +40,7 @@ export default function GlobalSearch() {
   const shown = query.trim() ? results : [...(favorite.value ?? []), ...(recent.value ?? []).filter(item => !(favorite.value ?? []).some(value => value.path === item.path))]
   return <div className="global-search">
     <input ref={input} type="search" aria-label="全局搜索" placeholder="搜索服务器、域名、节点、任务…" value={query} onFocus={() => setOpen(true)} onChange={event => { setQuery(event.target.value); setOpen(true) }} />
-    {open && <div className="global-search-results"><div className="control-actions"><strong>{query.trim() ? '搜索结果' : '收藏与最近访问'}</strong><button onClick={() => setOpen(false)} aria-label="关闭搜索">关闭</button></div>
+    {open && <div className="global-search-results"><div className="control-actions"><strong>{query.trim() ? '搜索结果' : '收藏与最近访问'}</strong><button className="ui-button" onClick={() => setOpen(false)} aria-label="关闭搜索">关闭</button></div>
       {error && <p role="alert">{error}</p>}{shown.length === 0 && <p>{query.trim() ? '没有匹配的授权对象' : '输入搜索词或访问对象后添加收藏。'}</p>}
       {shown.map((item, index) => <div className="search-item" key={`${item.kind}-${item.id}-${index}`}><button onClick={() => visit(item)}><small>{kinds[item.kind] ?? item.kind}</small><span>{item.label}</span></button><button disabled={!favorite.ready} aria-label={`收藏${item.label}`} onClick={() => pin(item)}>{(favorite.value ?? []).some(value => value.path === item.path) ? '★' : '☆'}</button></div>)}
       <small>Ctrl / ⌘ + K 打开，Esc 关闭</small>
