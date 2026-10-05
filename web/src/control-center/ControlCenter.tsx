@@ -3,6 +3,8 @@ import { api } from '../api'
 import { ErrorNotice, Loading, PageHeader, Refresh } from '../components'
 import { useAction, useResource } from '../hooks'
 import { usePreference } from './preferences'
+import type { Locale } from '../i18n'
+import { useI18n } from '../i18n'
 import SystemHealth from './SystemHealth'
 import ToolSecurity from './ToolSecurity'
 import './control-center.css'
@@ -20,13 +22,16 @@ const ids = (value: string) => value.split(/[,，\s]+/).filter(Boolean).map(Numb
 const emptyAdmin = { login_name: '', display_name: '', role: 'viewer', enabled: true, all_servers: false, capabilities: [] as string[], server_ids: [] as number[], password: '', expected_revision: 0 }
 
 function Appearance() {
-  const preference = usePreference<{ theme: string; density: string }>('appearance')
+  const preference = usePreference<{ theme: string; density: string; locale?: Locale }>('appearance')
   const action = useAction()
-  const value = preference.value ?? { theme: 'system', density: 'comfortable' }
-  return <section className="panel"><div className="panel-heading"><h2>主题与密度</h2></div><div className="panel-body"><ErrorNotice message={action.error || preference.error} retry={preference.reload} /><div className="control-form-grid">
-    <label className="field"><span>主题</span><select disabled={!preference.ready || action.busy} value={value.theme} onChange={event => void action.run(() => preference.save({ ...value, theme: event.target.value }))}><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label>
-    <label className="field"><span>密度</span><select disabled={!preference.ready || action.busy} value={value.density} onChange={event => void action.run(() => preference.save({ ...value, density: event.target.value }))}><option value="comfortable">舒适</option><option value="compact">紧凑</option></select></label>
-  </div><p>偏好按管理员保存。搜索快捷键为 Ctrl / ⌘ + K，收藏与最近访问可在全局搜索中直接进入。</p></div></section>
+  const { locale, setLocale, t } = useI18n()
+  const value = preference.value ?? { theme: 'system', density: 'comfortable', locale }
+  const save = (next: Partial<typeof value>) => void action.run(() => preference.save({ ...value, ...next }))
+  return <section className="panel"><div className="panel-heading"><h2>{t('主题与密度')}</h2></div><div className="panel-body"><ErrorNotice message={action.error || preference.error} retry={preference.reload} /><div className="control-form-grid">
+    <label className="field"><span>{t('主题')}</span><select disabled={!preference.ready || action.busy} value={value.theme} onChange={event => save({ theme: event.target.value })}><option value="system">{t('跟随系统')}</option><option value="light">{t('浅色')}</option><option value="dark">{t('深色')}</option></select></label>
+    <label className="field"><span>{t('密度')}</span><select disabled={!preference.ready || action.busy} value={value.density} onChange={event => save({ density: event.target.value })}><option value="comfortable">{t('舒适')}</option><option value="compact">{t('紧凑')}</option></select></label>
+    <label className="field"><span>{t('界面语言')}</span><select disabled={!preference.ready || action.busy} value={value.locale ?? locale} onChange={event => { const next = event.target.value as Locale; setLocale(next); save({ locale: next }) }}><option value="zh-CN">{t('简体中文')}</option><option value="en-US">{t('English')}</option></select></label>
+  </div><p>{t('偏好按管理员保存。搜索快捷键为 Ctrl / ⌘ + K，收藏与最近访问可在全局搜索中直接进入。')}</p></div></section>
 }
 function Administrators() {
   const resource = useResource<{ administrators: Administrator[]; features: string[] }>('/api/control-center/administrators')
