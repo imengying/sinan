@@ -37,9 +37,9 @@
 .server-assets-progress{display:flex;align-items:center;gap:12px;margin:16px 0;font-size:12px}
 .server-assets-progress .meter{flex:1}
 .server-setup-presets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
-.server-setup-presets button{position:relative;text-align:left;padding:12px 14px;border:1px solid #e0e7dc;border-radius:7px;background:#fff;color:#5c7155;transition:border-color .15s,background .15s}
-.server-setup-presets button[aria-pressed=true]{background:#f0f6eb;border-color:#8ba77a}
-.server-setup-presets button[aria-pressed=true]:after{content:'';position:absolute;right:12px;top:14px;width:6px;height:6px;border-radius:50%;background:#6e9356}
+.server-setup-presets button{position:relative;text-align:left;padding:12px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface,#fff);color:var(--ink);transition:border-color .15s,background .15s}
+.server-setup-presets button:where(:not(:disabled)):hover,.server-setup-presets button[aria-pressed=true]{background:var(--soft-green);border-color:var(--green)}
+.server-setup-presets button[aria-pressed=true]:after{content:'';position:absolute;right:12px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--green)}
 .server-setup-presets strong{display:block;font-size:12px;margin-bottom:7px;font-weight:600}
 .server-setup-presets span{display:block;font-size:10px;line-height:1.6}
 .server-setup-presets small{display:block;font-size:9px;color:#6a7364;margin-top:4px}

@@ -207,7 +207,7 @@ async function run() {
         await assertColour(page, '#node-active', '--green', 'Hovered active navigation must keep its theme accent')
         const idleIcon = await colour(page, '#icon-action')
         await hover(page, '#icon-action')
-        const hoveredIcon = await assertColour(page, '#icon-action', '--ink', 'Hovered icon action must keep its theme foreground')
+        const hoveredIcon = await assertColour(page, '#icon-action', '--green', 'Hovered icon action must use the shared control accent')
         assert.notEqual(hoveredIcon, idleIcon, 'Icon hover must remain distinct from idle')
         const currentStep = await assertColour(page, '#step-current', '#215e49', 'Current setup step must keep its existing state colour')
         const completeStep = await assertColour(page, '#step-complete', '#557762', 'Completed setup step must keep its existing state colour')
