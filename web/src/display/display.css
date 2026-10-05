@@ -9,6 +9,7 @@
   --d-muted: #e7ecee; --d-muted-text: #59666f; --d-border: rgb(83 104 116 / .18);
   --d-success: #047a52; --d-warning: #9a5d00; --d-danger: #c9293a;
   --d-success-bar: #10b981; --d-warning-bar: #d97706; --d-danger-bar: #ef4444; --d-info: #2563b9;
+  --d-poor-bar: #a45e3b;
   --d-grid: rgb(83 104 116 / .15); --d-shadow: 0 10px 32px rgb(31 48 58 / .09), inset 0 1px 0 rgb(255 255 255 / .58);
   --green: var(--d-primary);
   display: flex; min-height: 100dvh; flex-direction: column; color: var(--d-foreground);
@@ -23,6 +24,7 @@
   --d-muted: #22282a; --d-muted-text: #9fa9a7; --d-border: rgb(218 234 230 / .12);
   --d-success: #38c895; --d-warning: #f0ad3d; --d-danger: #fb7185;
   --d-success-bar: #38c895; --d-warning-bar: #f0ad3d; --d-danger-bar: #fb7185; --d-info: #69a7e8;
+  --d-poor-bar: #ea8754;
   --d-grid: rgb(218 234 230 / .14); --d-shadow: 0 12px 36px rgb(0 0 0 / .28), inset 0 1px 0 rgb(255 255 255 / .035);
   color-scheme: dark;
 }
@@ -118,7 +120,11 @@ body.has-server-display { min-width: 320px; }
 .d-data small { font-size: 10px; color: var(--d-muted-text); }
 .d-data span { overflow: hidden; text-overflow: ellipsis; display: flex; min-width: 0; align-items: center; gap: 4px; color: var(--d-muted-text); font-size: 11px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .d-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; color: var(--d-muted-text); }
-.d-offline-overlay { position: absolute; display: flex; inset: 0; flex-direction: column; align-items: center; justify-content: center; background: color-mix(in srgb, var(--d-card-solid) 55%, transparent); backdrop-filter: blur(2px); }
+/* The wash alone barely desaturates a saturated fill, so the meter bars used to
+   punch through at full strength while the text behind was destroyed, which read
+   as a rendering fault rather than an inactive card. Saturating the backdrop
+   dims colour and text together; a translucent fill cannot do that on its own. */
+.d-offline-overlay { position: absolute; display: flex; inset: 0; flex-direction: column; align-items: center; justify-content: center; background: color-mix(in srgb, var(--d-card-solid) 62%, transparent); backdrop-filter: blur(3px) saturate(.2); }
 .d-offline-overlay strong { color: var(--d-danger); font-size: 14px; }
 .d-offline-overlay span { max-width: 100%; margin-top: 4px; padding-inline: 8px; color: var(--d-muted-text); font-size: 11px; text-align: center; }
 .d-footnote { margin: 4px 0; color: var(--d-muted-text); font-size: 11px; line-height: 1.8; }
@@ -238,7 +244,7 @@ body.has-server-display { min-width: 320px; }
 .d-quality-good { color: var(--d-success-bar); }
 .d-quality-fair { color: var(--d-info); }
 .d-quality-warning { color: var(--d-warning-bar); }
-.d-quality-poor { color: #ea8754; }
+.d-quality-poor { color: var(--d-poor-bar); }
 .d-quality-danger { color: var(--d-danger-bar); }
 .d-quality-empty { color: var(--d-muted-text); }
 .d-quality-bar.d-quality-empty { padding: 0; border-radius: 1px; background: color-mix(in srgb, var(--d-muted-text) 20%, transparent); }

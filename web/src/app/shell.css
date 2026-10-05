@@ -35,7 +35,7 @@
 
 .sidebar nav { flex: 1 1 0; min-height: 0; overflow-y: auto; scrollbar-width: thin; display: flex; flex-direction: column; gap: 2px; }
 .nav-entry { min-width: 0; }
-.nav-group-label { padding: 16px 12px 6px; font-size: 10px; letter-spacing: 1px; color: #8b968b; }
+.nav-group-label { padding: 16px 12px 6px; font-size: 10px; letter-spacing: 1px; color: #6a726a; }
 .nav-entry:first-child .nav-group-label { padding-top: 2px; }
 .sidebar nav a {
   display: flex;
@@ -43,7 +43,7 @@
   gap: 11px;
   padding: 9px 12px;
   border-radius: 7px;
-  color: #6f7c70;
+  color: #677368;
   font-size: 13px;
   font-weight: 500;
 }
@@ -67,7 +67,7 @@
 .logout-button > span:nth-child(2) { flex: 1; min-width: 0; }
 .logout-button strong { display: block; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .logout-button small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; }
-.logout-button > svg { color: #919a90; }
+.logout-button > svg { color: #6b726b; }
 .admin-avatar {
   width: 32px;
   height: 32px;
@@ -77,7 +77,7 @@
   border: 1px solid #dce3d7;
   border-radius: 50%;
   background: #e8ece4;
-  color: #637958;
+  color: #5b6f51;
   font-size: 11px;
 }
 
@@ -91,7 +91,7 @@
   padding: 0 40px;
   border-bottom: 1px solid #e5eae4;
   background: #f7f9f5;
-  color: #98a098;
+  color: #6d736d;
   font-size: 12px;
 }
 .breadcrumb { display: flex; align-items: center; gap: 10px; min-width: 0; }
@@ -108,7 +108,7 @@
   margin: 0 40px;
   padding: 18px 0 22px;
   border-top: 1px solid #e3e9e1;
-  color: #9ba599;
+  color: #6b726a;
   font-size: 10px;
 }
 .app-footer span:first-child { letter-spacing: 3px; }

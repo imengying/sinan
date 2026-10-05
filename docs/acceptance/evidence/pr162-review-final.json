@@ -1,0 +1,97 @@
+{
+  "schema": "sinan-pr162-review-v1",
+  "recorded_at": "2026-10-05T03:36:25.429639+00:00",
+  "base": "f1e971da3a43c91f2e937f57e424d5f71d178bda",
+  "author_head": "ce6f8e2ca7995389617010a2f49ba2f5a362c15a",
+  "source_web_inventory_sha256": "7fc4babdff14e2c03f2e48a201d24ab3d0c59c996436924965016a8cd565aa0b",
+  "source_inventory_role": "321 web source/test/build files inventory; not a claim every file was consumed by every check",
+  "dist": {
+    "dist_files": 63,
+    "dist_bytes": 1377642,
+    "manifest_sha256": "10aa5e3112cbd8307301a4b71696d09c6efdac8519eeb23421ab5636bb597341"
+  },
+  "unit": {
+    "passed": 190,
+    "failed": 0,
+    "expect_calls": 2432,
+    "files": 33,
+    "actual_full_runs": 1
+  },
+  "typescript_force_runs": 1,
+  "vite_runs": 1,
+  "browser": {
+    "full_groups": 15,
+    "attempts": 15,
+    "groups": [
+      "server-setup",
+      "server-display",
+      "dashboard",
+      "statistics",
+      "node-catalog",
+      "node-settings",
+      "plugin-catalog",
+      "display-data",
+      "server-operations",
+      "monitoring",
+      "ddns",
+      "alicloud",
+      "proxy-resources",
+      "subscription-sources",
+      "theme-contrast"
+    ],
+    "totals": {
+      "launches": 15,
+      "contexts": 50,
+      "pages": 50,
+      "requests": 4348,
+      "privateApiRequests": 3702,
+      "privateWrites": 291,
+      "externalRequests": 0,
+      "normalContextCloses": 50,
+      "normalBrowserCloses": 15
+    },
+    "page_errors": 0,
+    "theme_contexts": 6,
+    "poor_computed_composited_contrast": {
+      "light": 4.504876704720098,
+      "dark": 6.726353290142337
+    },
+    "role": "14 complete existing mock SPA groups plus one compiled-CSS offline DOM state group; private fixture API writes only"
+  },
+  "source_review_repairs": [
+    "node hover/active",
+    "icon hover",
+    "setup current/complete",
+    "online enrollment icon",
+    "disabled fields",
+    "enrollment command code",
+    "notice quiet-notice inheritance"
+  ],
+  "source_bun": {
+    "source": "https://registry.npmjs.org/@oven/bun-darwin-aarch64/1.4.2",
+    "archive_bytes": 26145119,
+    "sha512_base64": "MXdZkP1featqxZ+/VTXWG1BVjM4OGBehVY2Q88EeUj/7L0UMeCGItmyPYTN+wxvlGJ6F66JEtzsw+GvQWewnag==",
+    "archive_sha256": "a9df486eaf7e9db9bdebb1fa425e8c9809abd783b1c518d1dbc5096a53b861ed",
+    "binary_sha256": "35d20dd0263e5c950194434b925454fdfa9ba6e4467da960410fa05b08a7a5b5",
+    "release_zip_download": {
+      "exit_code": 28,
+      "received_bytes": 3867259,
+      "expected_bytes": 25377591,
+      "verified": false
+    },
+    "binary": "/Users/l7/.local/share/sinan-merge-test/pr162-runtime-20261005/bun-npm/package/bin/bun",
+    "test_only": true,
+    "npm_signatures_verified": false
+  },
+  "ci": {
+    "executed": false,
+    "source_workflows": "disabled_manually",
+    "dynamic_copilot": "active"
+  },
+  "unverified": [
+    "Rust compilation and compiled embedded handler at this head were not needed for CSS-only source scope and were not run",
+    "Full-page universal WCAG conformance, existing dark accessibility defects and other browser engines",
+    "Native/real devices, real deployment, cloud API, signing or release"
+  ],
+  "raw_materials": "This round raw logs/audit/runtime/download/node_modules will be removed after bounded results and current source identity are saved; these hashes record historical output identity without promising continued raw availability."
+}
